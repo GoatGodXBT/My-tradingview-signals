@@ -16,6 +16,8 @@ OverSold = input(20)
 smoothK = 3
 smoothD = 3
 
+ProfitTarget = input(.02)
+
 checkhigh = ta.ema(close,100)
 checklow = ta.ema(close,50)
 
@@ -33,5 +35,5 @@ if (not na(k) and not na(d))
 		
 		
 		
-strategy.exit("long exit","Long entry", profit = close * .02 / syminfo.mintick, loss = close * .01 / syminfo.mintick)
-strategy.exit("short exit","Short entry", profit = close * .02 / syminfo.mintick, loss = close * .01 / syminfo.mintick)
+strategy.exit("long exit","Long entry", profit = close * ProfitTarget / syminfo.mintick, loss = close * (ProfitTarget /2) / syminfo.mintick)
+strategy.exit("short exit","Short entry", profit = close * ProfitTarget / syminfo.mintick, loss = close * (ProfitTarget / 2) / syminfo.mintick)
